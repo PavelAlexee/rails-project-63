@@ -1,8 +1,11 @@
 # HexletCode
 
-TODO: Delete this and the text below, and describe your gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hexlet_code`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Ruby CI](https://github.com/PavelAlexee/rails-project-63/actions/workflows/ci.yml/badge.svg)](https://github.com/PavelAlexee/rails-project-63/actions/workflows/ci.yml)
+[![Hexlet Check](https://github.com/PavelAlexee/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/PavelAlexee/rails-project-63/actions/workflows/hexlet-check.yml)
+
+DSL form generator gem for Hexlet project.
+
 
 ## Installation
 
