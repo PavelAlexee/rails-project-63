@@ -1,23 +1,24 @@
 # frozen_string_literal: true
 
-require_relative "lib/hexlet_code/version"
+require_relative 'lib/hexlet_code/version'
 
 Gem::Specification.new do |spec|
-  spec.name = "hexlet_code"
+  spec.name = 'hexlet_code'
   spec.version = HexletCode::VERSION
-  spec.authors = ["PavelAlexee"]
-  spec.email = ["pavelps41980@gmail.com"]
+  spec.authors = ['PavelAlexee']
+  spec.email = ['pavelps41980@gmail.com']
 
-  spec.summary = "The DSL form generator is convenient for generating forms."
-  spec.homepage = "https://github.com/PavelAlexee/rails-project-63#"
-  spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.1.0"
+  spec.summary = 'The DSL form generator is convenient for generating forms.'
+  spec.homepage = 'https://github.com/PavelAlexee/rails-project-63#'
+  spec.license = 'MIT'
+  spec.required_ruby_version = '>= 3.1.0'
 
-  spec.metadata["allowed_push_host"] = "https://github.com/PavelAlexee/rails-project-63#"
+  spec.metadata['allowed_push_host'] = 'https://github.com/PavelAlexee/rails-project-63#'
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/PavelAlexee/rails-project-63#"
-  spec.metadata["changelog_uri"] = "https://github.com/PavelAlexee/rails-project-63#"
+  spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['source_code_uri'] = 'https://github.com/PavelAlexee/rails-project-63#'
+  spec.metadata['changelog_uri'] = 'https://github.com/PavelAlexee/rails-project-63#'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -28,9 +29,9 @@ Gem::Specification.new do |spec|
         f.start_with?(*%w[bin/ test/ spec/ features/ .git appveyor Gemfile])
     end
   end
-  spec.bindir = "exe"
+  spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
