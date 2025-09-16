@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'hexlet_code'
 require 'spec_helper'
 
-RSpec.describe HexletCode do
-  User = Struct.new(:name, :job, keyword_init: true)
+User = Struct.new(:name, :job, keyword_init: true)
 
+RSpec.describe HexletCode do
   describe '.form_for' do
     let(:user) { User.new name: 'rob' }
 

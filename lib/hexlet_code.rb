@@ -6,7 +6,7 @@ module HexletCode
 
   class Error < StandardError; end
 
-  def self.form_for(user, **attributes)
+  def self.form_for(_user, **attributes)
     form_attrs = { action: '#', method: 'post' }
 
     form_attrs[:action] = attributes.delete(:url) if attributes.key?(:url)
