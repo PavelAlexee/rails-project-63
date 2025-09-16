@@ -5,4 +5,13 @@ module HexletCode
   autoload :VERSION, 'hexlet_code/version'
 
   class Error < StandardError; end
+
+  def self.form_for(user, **attributes)
+    form_attrs = { action: '#', method: 'post' }
+
+    form_attrs[:action] = attributes.delete(:url) if attributes.key?(:url)
+
+    form_attrs.merge!(attributes)
+    Tag.build('form', **form_attrs)
+  end
 end
