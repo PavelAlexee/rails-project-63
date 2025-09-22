@@ -20,6 +20,13 @@ module HexletCode
                  end
     end
 
+    def submit(button_value = 'Save', **attrs)
+      final_attrs = { type: 'submit', value: button_value }
+      final_attrs.merge!(attrs)
+
+      @fields << HexletCode::Tag.build('input', **final_attrs)
+    end
+
     def to_s
       @fields.join
     end
@@ -33,7 +40,13 @@ module HexletCode
       final_attrs = { name: name, type: type, value: value }
       final_attrs.merge!(attrs)
 
-      HexletCode::Tag.build('input', **final_attrs)
+      build_lable(name) + HexletCode::Tag.build('input', **final_attrs)
+    end
+
+    def build_lable(name)
+      final_attrs = { for: name }
+
+      HexletCode::Tag.build('label', **final_attrs) { name.capitalize.to_s }
     end
 
     def build_textarea(name, **attrs)
@@ -47,3 +60,22 @@ module HexletCode
     end
   end
 end
+
+# User = Struct.new(:name, :job, keyword_init: true)
+# user = User.new job: 'hexlet'
+
+# HexletCode.form_for user do |f|
+#   f.input :name
+#   f.input :job
+#   f.submit
+#   f.submit 'Wow'
+# end
+
+# <form action="#" method="post">
+#   <label for="name">Name</label>
+#   <input name="name" type="text" value="">
+#   <label for="job">Job</label>
+#   <input name="job" type="text" value="hexlet">
+#   <input type="submit" value="Save">
+#   <input type="submit" value="Wow">
+# </form>

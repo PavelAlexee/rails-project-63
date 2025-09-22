@@ -36,8 +36,9 @@ RSpec.describe HexletCode do
         f.input :name
         f.input :job, as: :text
       end
-      expected_form = '<form action="#" method="post"><input name="name" type="text" value="rob">' \
-                      '<textarea name="job" cols="20" rows="40">hexlet</textarea></form>'
+      expected_form = '<form action="#" method="post"><label for="name">Name</label>' \
+                      '<input name="name" type="text" value="rob"><textarea name="job" cols="20" rows="40">hexlet' \
+                      '</textarea></form>'
 
       expect(generate_tag).to eq expected_form
     end
@@ -45,10 +46,9 @@ RSpec.describe HexletCode do
     it 'checks input fields with additional attributes' do
       generate_tag = HexletCode.form_for user, url: '#' do |f|
         f.input :name, class: 'user-input'
-        f.input :job
       end
-      expected_form = '<form action="#" method="post"><input name="name" type="text" value="rob" class="user-input">' \
-                      '<input name="job" type="text" value="hexlet"></form>'
+      expected_form = '<form action="#" method="post"><label for="name">Name</label>' \
+                      '<input name="name" type="text" value="rob" class="user-input"></form>'
 
       expect(generate_tag).to eq expected_form
     end
@@ -68,6 +68,37 @@ RSpec.describe HexletCode do
           f.input :age
         end
       end.to raise_error(NoMethodError)
+    end
+  end
+
+  describe 'input fields' do
+    it "checks method 'submit'" do
+      generate_tag = HexletCode.form_for user, &:submit
+
+      expected_form = '<form action="#" method="post"><input type="submit" value="Save"></form>'
+
+      expect(generate_tag).to eq expected_form
+    end
+
+    it 'check labels with input' do
+      generate_tag = HexletCode.form_for user do |f|
+        f.input :job
+      end
+
+      expected_form = '<form action="#" method="post"><label for="job">Job</label>' \
+                      '<input name="job" type="text" value="hexlet"></form>'
+
+      expect(generate_tag).to eq expected_form
+    end
+
+    it 'check the text for the button' do
+      generate_tag = HexletCode.form_for user do |f|
+        f.submit 'Wow'
+      end
+
+      expected_form = '<form action="#" method="post"><input type="submit" value="Wow"></form>'
+
+      expect(generate_tag).to eq expected_form
     end
   end
 end
