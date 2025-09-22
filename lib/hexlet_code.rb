@@ -3,15 +3,17 @@
 module HexletCode
   autoload :Tag, 'hexlet_code/tag'
   autoload :VERSION, 'hexlet_code/version'
+  autoload :FormBuilder, 'hexlet_code/form_builder'
 
   class Error < StandardError; end
 
-  def self.form_for(_user, **attributes)
+  def self.form_for(user, **attributes, &)
     form_attrs = { action: '#', method: 'post' }
-
     form_attrs[:action] = attributes.delete(:url) if attributes.key?(:url)
-
     form_attrs.merge!(attributes)
-    Tag.build('form', **form_attrs)
+
+    form_builder = FormBuilder.new(user)
+    yield form_builder if block_given?
+    Tag.build('form', **form_attrs) { form_builder.to_s }
   end
 end

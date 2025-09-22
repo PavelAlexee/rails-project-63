@@ -2,23 +2,23 @@
 
 module HexletCode
   class Tag
-    ORDINARY_TAGS = %w[br col img link].freeze
+    ORDINARY_TAGS = %w[br col img link input].freeze
 
-    def self.build(tag_name, **attributes)
+    def self.build(tag_name, **attributes, &)
       attrs = build_attributes(attributes)
-      tag = "<#{tag_name}#{attrs}>"
-      end_tag = "</#{tag_name}>"
 
       if block_given?
-        text = yield
+        content = yield
+        "<#{tag_name}#{attrs}>#{content}</#{tag_name}>"
 
-        "#{tag}#{text}#{end_tag}"
       else
-        ORDINARY_TAGS.include?(tag_name) ? tag : "#{tag}#{end_tag}"
+        ORDINARY_TAGS.include?(tag_name) ? "<#{tag_name}#{attrs}>" : "<#{tag_name}#{attrs}></#{tag_name}>"
       end
     end
 
     def self.build_attributes(attrs)
+      return '' if attrs.empty?
+
       attrs.map { |key, value| " #{key}=\"#{value}\"" }.join
     end
   end

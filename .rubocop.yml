@@ -7,4 +7,8 @@ Style/Documentation:
 
 require:
   - rubocop-rake
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/hexlet_code_spec.rb'
   
