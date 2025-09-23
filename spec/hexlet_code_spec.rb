@@ -37,7 +37,8 @@ RSpec.describe HexletCode do
         f.input :job, as: :text
       end
       expected_form = '<form action="#" method="post"><label for="name">Name</label>' \
-                      '<input name="name" type="text" value="rob"><textarea name="job" cols="20" rows="40">hexlet' \
+                      '<input name="name" type="text" value="rob">' \
+                      '<label for="job">Job</label><textarea name="job" cols="20" rows="40">hexlet' \
                       '</textarea></form>'
 
       expect(generate_tag).to eq expected_form
@@ -57,7 +58,8 @@ RSpec.describe HexletCode do
       generate_tag = HexletCode.form_for user do |f|
         f.input :job, as: :text, rows: 50, cols: 50
       end
-      expected_form = '<form action="#" method="post"><textarea name="job" cols="50" rows="50">hexlet</textarea></form>'
+      expected_form = '<form action="#" method="post"><label for="job">Job</label>' \
+                      '<textarea name="job" cols="50" rows="50">hexlet</textarea></form>'
 
       expect(generate_tag).to eq expected_form
     end
