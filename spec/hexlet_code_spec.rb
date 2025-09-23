@@ -8,7 +8,7 @@ User = Struct.new(:name, :job, :gender, keyword_init: true)
 RSpec.describe HexletCode do
   let(:user) { User.new name: 'rob', job: 'hexlet', gender: 'm' }
 
-  describe '.form_for' do
+  describe '.form_for basic forms' do
     it 'generates a empty form' do
       generate_tag = HexletCode.form_for user
       expected_form = '<form action="#" method="post"></form>'
@@ -30,7 +30,8 @@ RSpec.describe HexletCode do
       expect(generate_tag).to eq expected_form
     end
   end
-  describe 'input fields' do
+
+  describe '.form_for with different input types' do
     it 'checks input fields :name and :job' do
       generate_tag = HexletCode.form_for user do |f|
         f.input :name
@@ -63,7 +64,9 @@ RSpec.describe HexletCode do
 
       expect(generate_tag).to eq expected_form
     end
+  end
 
+  describe '.form_for error handling' do
     it 'raises error for undefined field' do
       expect do
         HexletCode.form_for user do |f|
@@ -73,7 +76,7 @@ RSpec.describe HexletCode do
     end
   end
 
-  describe 'input fields' do
+  describe '.form_for submit functionality' do
     it "checks method 'submit'" do
       generate_tag = HexletCode.form_for user, &:submit
 
