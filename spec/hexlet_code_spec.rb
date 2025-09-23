@@ -5,7 +5,7 @@ require 'spec_helper'
 
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 
-# rubocop:disable Metrics/BlockLength, Lint/RedundantCopDisableDirective
+# rubocop:disable Metrics/BlockLength
 RSpec.describe HexletCode do
   let(:user) { User.new name: 'rob', job: 'hexlet', gender: 'm' }
 
@@ -93,4 +93,4 @@ RSpec.describe HexletCode do
     end
   end
 end
-# rubocop:disable Metrics/BlockLength
+# rubocop:enable Metrics/BlockLength
